@@ -29,7 +29,7 @@ function Modal({
 			onClick={closeModal}
 		>
 			<section
-				className="h-fit w-fit bg-card absolute left-1/2 -translate-x-1/2 top-[20%] border p-5 pt-2 pb-2 flex flex-col rounded-md"
+				className="h-fit w-fit bg-card absolute left-1/2 -translate-x-1/2 top-[20%] border p-5 pt-2 flex flex-col rounded-md"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-row justify-center mb-3">

@@ -54,34 +54,43 @@ export default function Home() {
   // }, [isModalOpen]);
 
 	return (
-		<main className="flex min-h-screen flex-col items-center bg-background">
-      <ThemeSwitch />
-      
+		<main className="flex min-h-screen flex-col items-start bg-background p-5 gap-5">
+			<div className="text-4xl font-medium">My Tasks</div>
+
+			<hr className="bg-foreground h-[0.5px] w-full" />
+
+			<ThemeSwitch />
+
 			<div className="">
 				<TodoHeader todos_completed={todos_completed} total_todos={total_todos} />
 				<button
 					type="button"
 					onClick={() => {
-            setEdit(false)
-            openModal({
-              title: "",
-              id: crypto.randomUUID(),
-              is_completed: false,
-            });
-          }}
+						setEdit(false);
+						openModal({
+							title: "",
+							id: crypto.randomUUID(),
+							is_completed: false,
+						});
+					}}
 				>
 					{" "}
 					Add{" "}
 				</button>
 				<Modal
-          isEdit={isEdit}
+					isEdit={isEdit}
 					inputRef={inputRef}
 					isModalOpen={isModalOpen}
 					modalTodoContent={modalTodoContent}
 					closeModal={closeModal}
 					setTodos={setTodos}
 				/>
-				<TodoList todos={todos} setTodos={setTodos} openModal={openModal} setEdit={setEdit}/>
+				<TodoList
+					todos={todos}
+					setTodos={setTodos}
+					openModal={openModal}
+					setEdit={setEdit}
+				/>
 			</div>
 		</main>
 	);

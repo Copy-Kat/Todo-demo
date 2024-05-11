@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const ThemeSwitch = () => {
 	const [mounted, setMounted] = useState(false);
@@ -15,10 +18,16 @@ const ThemeSwitch = () => {
 	}
 
 	return (
-		<select value={theme} onChange={(e) => setTheme(e.target.value)}>
-			<option value="system">System</option>
-			<option value="dark">Dark</option>
-			<option value="light">Light</option>
+		<select
+			className="rounded-md border border-input bg-background px-3 py-2 text-sm"
+			value={theme}
+			onChange={(e) => setTheme(e.target.value)}
+		>
+			<optgroup className={"bg-background font-sans"} label="Theme">
+				<option value="system">System</option>
+				<option value="dark">Dark</option>
+				<option value="light">Light</option>
+			</optgroup>
 		</select>
 	);
 };
