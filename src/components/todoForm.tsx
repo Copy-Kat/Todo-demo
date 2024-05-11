@@ -10,7 +10,7 @@ interface TodoFormProps {
 }
 
 interface FormFields extends HTMLFormControlsCollection {
-	todo: HTMLInputElement;
+	title: HTMLInputElement;
 }
 
 interface FormData extends HTMLFormElement {
@@ -31,7 +31,7 @@ function TodoForm({
 
 		const form = event.currentTarget;
 
-		const value = form.elements.todo.value;
+		const value = form.elements.title.value;
 
 		if (isEdit) {
 			setTodos((prevTodos) =>
@@ -57,22 +57,27 @@ function TodoForm({
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setTitleValue(event.target.value);
 	};
-
 	return (
-		<form className="form" onSubmit={handleSubmit}>
-			<label htmlFor="todo">
+		<form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+			<div className="flex flex-col gap-3">
+				<label htmlFor="title"> Title: </label>
 				<input
+					className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
 					onChange={handleChange}
 					ref={inputRef}
 					type="text"
-					name="todo"
-					id="todo"
+					name="title"
+					id="title"
 					value={titleValue}
 					placeholder="Write your next task"
 				/>
-			</label>
-			<button type="submit">
-				Submit
+			</div>
+
+			<button
+				className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 w-fit pl-2 pr-2"
+				type="submit"
+			>
+				{isEdit ? "Apply" : "Add"}
 			</button>
 		</form>
 	);

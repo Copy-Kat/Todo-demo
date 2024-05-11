@@ -26,17 +26,6 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  React.useEffect(() => {
-    if (isModalOpen && inputRef.current) {
-      inputRef.current.focus();
-      // position the cursor at the end of the text
-      inputRef.current.setSelectionRange(
-        inputRef.current.value.length,
-        inputRef.current.value.length
-      );
-    }
-  }, [isModalOpen]);
-
   const [todos, setTodos] = React.useState<Todo[]>([
 			{ title: "Some task", id: 'a', is_completed: false },
 			{
@@ -53,6 +42,17 @@ export default function Home() {
 
 	const total_todos = todos.length;
 
+  // React.useEffect(() => {
+  //   if (isModalOpen && inputRef.current) {
+  //     inputRef.current.focus();
+  //     // position the cursor at the end of the text
+  //     inputRef.current.setSelectionRange(
+  //       inputRef.current.value.length,
+  //       inputRef.current.value.length
+  //     );
+  //   }
+  // }, [isModalOpen]);
+
 	return (
 		<main className="flex min-h-screen flex-col items-center bg-background">
       <ThemeSwitch />
@@ -64,7 +64,7 @@ export default function Home() {
 					onClick={() => {
             setEdit(false)
             openModal({
-              title: "add todo",
+              title: "",
               id: crypto.randomUUID(),
               is_completed: false,
             });
