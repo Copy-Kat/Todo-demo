@@ -24,17 +24,17 @@ function Modal({
 	}
 	return (
 		<div
-			className="h-screen w-screen absolute top-0 left-0 bg-background bg-opacity-70
+			className="h-full w-full absolute top-0 left-0 bg-background bg-opacity-70
             "
 			onClick={closeModal}
 		>
 			<section
-				className="h-fit w-fit bg-card absolute left-1/2 -translate-x-1/2 top-[20%] border p-5 pt-2 flex flex-col rounded-md"
+				className="h-fit min-w-80 w-[500px] max-w-[90%] bg-card absolute left-1/2 -translate-x-1/2 top-[20%] border p-5 pt-2 flex flex-col rounded-md"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-row justify-center mb-3">
 					<span className="m-auto">{isEdit ? "Editing existing todo" : "Make a new todo"}</span>
-					<span onClick={closeModal}>
+					<span className="text-lg cursor-pointer font-bold" onClick={closeModal}>
 						&times;
 					</span>
 				</div>

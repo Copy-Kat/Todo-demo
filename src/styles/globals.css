@@ -1,7 +1,8 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 
+  
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -23,7 +24,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
-    --radius: 1rem;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -50,12 +51,24 @@
 }
 
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
   }
+
+.booked::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% -150%;
+  border-radius: var(--radius);
+  height: 4px;
+  width: 4px;
+  background: currentColor;
+  z-index: 1;
 }
-
-
-
-
